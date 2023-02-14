@@ -9,21 +9,45 @@
 </head>
 
 <body>
+  <div class="image">  
+  <img src="images/Ethereum.png" width="400" height="500">
+  </div>
+  <div class="container">
+    <h1>Transaction Form</h1>
+    <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
+    <form id="form">
+      <div class="text-box">
+        <label for="input-address">ETH Address</label>
+        <input id="input-address" placeholder="Input address here"/>
+      </div>
 
-  <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
-  <form onsubmit="return !1">
-    <label for="input-address">ETH Address</label>
-    <input id="input-address" />
+      <br>
 
-    <label for="input-amount">Amount to send</label>
-    <input id="input-amount" />
+      <div class = "text-box">
+        <label for="input-amount">Amount to send</label>
+        <input id="input-amount" type="number" step="0.00001" min="0" placeholder="Input amount here"/>
+      </div>
 
-    <label for="input-otp">OTP Authentication</label>
-    <input type="number" id="input-otp" />
+      <br>
 
-    <button>SEND TOKENS</button>
-  </form>
-  <script src="script.js"></script>
+      <div class = "text-box">
+        <label for="input-otp">OTP Authentication</label>
+        <input id="input-otp" type="number" placeholder="Input OTP here"/>
+      </div>
+
+      <br>
+
+      <button class="button" type="submit">SEND TOKENS</button>
+
+      <div class="popup" id="popup">
+        <h2>Success</h2>
+        <p>Transaction completed!</p>
+        <button type="button" onclick="closePopup()">OK</button>
+      </div>
+
+    </form>
+    <script src="script.js"></script>
+  </div>
 </body>
 
 </html>

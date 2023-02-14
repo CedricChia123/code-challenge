@@ -3,6 +3,102 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(180deg, #43c6ac, #191654);
   min-width: 360px;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  position: absolute;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(120deg,#43c6ac, #f8ffae);
+  width: 50%;
+  height: 55%;
+  text-align: center;
+  right: 60px;
+}
+
+.container h1 {
+  font-family: Verdana, Tahoma, sans-serif;
+  font-size: 30;
+}
+
+.text-box {
+  position: relative;
+  left: 60px;
+}
+
+.text-box input {
+  width: 50%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  left: 10px;
+  background: white;
+  outline: none;
+  border-radius: 10px;
+}
+
+.text-box input::placeholder {
+  font-weight: bold;
+  opacity: 0.5;
+  color: grey;
+}
+
+.text-box label {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+}
+
+.submit-button {
+  size: 40px;
+}
+
+.image {
+  width: 100%;
+  display: block;
+  text-align: left;
+  margin-left: 80px;
+}
+
+.button {
+  width: 25%;
+  transition-duration: 0.4s;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.popup{
+  visibility: hidden;
+  width: 50%;
+  background: white;
+  border-radius: 15px;
+  position: absolute;
+  left: 50%;
+  transform:translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 30px;
+  transition:transform 0.5s, top 0.5s;
+}
+
+.show-popup{
+  visibility:visible;
+  top:50%;
+  transform:translate(-50%, -50%) scale(1);
+}
+
+.popup button{
+  width: 50%;
+  margin-top: 50px;
+  padding: 10px;
+  background: #f8ffae;
+  color: #193B4D;
+  border-radius: 10px;
 }
