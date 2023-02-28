@@ -14,6 +14,7 @@ var sum_to_n_b = function(n) {
     }
 };
 
+// Sum of arithmetic series: 1 is first term, n is last term
 var sum_to_n_c = function(n) {
     return (n * (n + 1)) / 2;
 };

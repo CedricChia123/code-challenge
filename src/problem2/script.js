@@ -16,6 +16,7 @@ form.addEventListener('submit', (e) =>{
   }
 })
 
+//class list used to toggle the pop up
 function openPopup(){
   var popup = document.getElementById("popup");
   popup.classList.add("show-popup");

@@ -18,6 +18,7 @@ class Datasource {
             const url = "https://interview.switcheo.com/test.json";
             let response = await fetch(url);
             let data = await response.json();
+            // nested array
             data = data.data.prices;
             let arr = [];
             // For each data in the returned data, add to the array

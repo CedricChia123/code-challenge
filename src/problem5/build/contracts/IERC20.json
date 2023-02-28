@@ -21,7 +21,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.13+commit.abaa5c0e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Balance.sol\":\"IERC20\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Balance.sol\":{\"keccak256\":\"0xe329ef7a80b60a5f9cb8af161d226f430e411318c9e8ffe62d0fe0b5215c0ae0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://22ee53166170be38e0feb9714c8395c080d94e7e8968bf8f5f7a49d97e327c49\",\"dweb:/ipfs/QmYaQZWVepQtm6kmRrSShsZZT1qkRhD19EqcDxzvHx8Kyv\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Balance.sol\":\"IERC20\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Balance.sol\":{\"keccak256\":\"0x5fc8c4e02dbfe1e90d24574aae7b843bcf05bc0aed61bb43e55d7824cb5f8ff1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://96ada2d2d219c07eb9944c1871b34981f43ce8a550b69c6a1c5c4c800bb30104\",\"dweb:/ipfs/QmfH4tbd1STU7NqTpbaNdzt1ftU7FGA81RxnBAhcvzZBXc\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -29,7 +29,7 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.13;\n\ninterface IERC20 {\n    function balanceOf(address account) external view returns (uint);\n}\n\ncontract Balance {\n    struct Token {\n        address addr;\n        uint balance;\n    }\n\n    function getBalances(address wallet, address[] memory tokenAddresses) public view returns(Token[] memory) {\n        Token[] memory tokens = new Token[](tokenAddresses.length);\n        for (uint i = 0; i < tokenAddresses.length; i++) {\n            IERC20 ercToken = IERC20(tokenAddresses[i]);\n            uint balance = ercToken.balanceOf(wallet);\n            tokens[i] = Token(tokenAddresses[i], balance);\n        }\n        return tokens;\n    }\n}",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.13;\n\ninterface IERC20 {\n    function balanceOf(address account) external view returns (uint256);\n}\n\ncontract Balance {\n    struct Token {\n        address addr;\n        uint balance;\n    }\n\n    function getBalances(address wallet, address[] memory tokenAddresses) public view returns(Token[] memory) {\n        Token[] memory tokens = new Token[](tokenAddresses.length);\n        for (uint i = 0; i < tokenAddresses.length; i++) {\n            IERC20 ercToken = IERC20(tokenAddresses[i]);\n            uint balance = ercToken.balanceOf(wallet);\n            tokens[i] = Token(tokenAddresses[i], balance);\n        }\n        return tokens;\n    }\n}",
   "sourcePath": "C:\\Users\\cedri\\Documents\\code-challenge\\src\\problem5\\contracts\\Balance.sol",
   "ast": {
     "absolutePath": "project:/contracts/Balance.sol",
@@ -127,7 +127,7 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 8,
-                  "src": "140:4:0",
+                  "src": "140:7:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -136,9 +136,9 @@
                   },
                   "typeName": {
                     "id": 5,
-                    "name": "uint",
+                    "name": "uint256",
                     "nodeType": "ElementaryTypeName",
-                    "src": "140:4:0",
+                    "src": "140:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -147,17 +147,17 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "139:6:0"
+              "src": "139:9:0"
             },
             "scope": 9,
-            "src": "81:65:0",
+            "src": "81:68:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
         "scope": 84,
-        "src": "58:90:0",
+        "src": "58:93:0",
         "usedErrors": []
       },
       {
@@ -172,7 +172,7 @@
           83
         ],
         "name": "Balance",
-        "nameLocation": "159:7:0",
+        "nameLocation": "162:7:0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -184,10 +184,10 @@
                 "id": 11,
                 "mutability": "mutable",
                 "name": "addr",
-                "nameLocation": "204:4:0",
+                "nameLocation": "207:4:0",
                 "nodeType": "VariableDeclaration",
                 "scope": 14,
-                "src": "196:12:0",
+                "src": "199:12:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -198,7 +198,7 @@
                   "id": 10,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
-                  "src": "196:7:0",
+                  "src": "199:7:0",
                   "stateMutability": "nonpayable",
                   "typeDescriptions": {
                     "typeIdentifier": "t_address",
@@ -212,10 +212,10 @@
                 "id": 13,
                 "mutability": "mutable",
                 "name": "balance",
-                "nameLocation": "223:7:0",
+                "nameLocation": "226:7:0",
                 "nodeType": "VariableDeclaration",
                 "scope": 14,
-                "src": "218:12:0",
+                "src": "221:12:0",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -226,7 +226,7 @@
                   "id": 12,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "218:4:0",
+                  "src": "221:4:0",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -236,17 +236,17 @@
               }
             ],
             "name": "Token",
-            "nameLocation": "180:5:0",
+            "nameLocation": "183:5:0",
             "nodeType": "StructDefinition",
             "scope": 83,
-            "src": "173:64:0",
+            "src": "176:64:0",
             "visibility": "public"
           },
           {
             "body": {
               "id": 81,
               "nodeType": "Block",
-              "src": "349:338:0",
+              "src": "352:338:0",
               "statements": [
                 {
                   "assignments": [
@@ -258,10 +258,10 @@
                       "id": 30,
                       "mutability": "mutable",
                       "name": "tokens",
-                      "nameLocation": "374:6:0",
+                      "nameLocation": "377:6:0",
                       "nodeType": "VariableDeclaration",
                       "scope": 81,
-                      "src": "359:21:0",
+                      "src": "362:21:0",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
@@ -275,12 +275,15 @@
                           "pathNode": {
                             "id": 27,
                             "name": "Token",
+                            "nameLocations": [
+                              "362:5:0"
+                            ],
                             "nodeType": "IdentifierPath",
                             "referencedDeclaration": 14,
-                            "src": "359:5:0"
+                            "src": "362:5:0"
                           },
                           "referencedDeclaration": 14,
-                          "src": "359:5:0",
+                          "src": "362:5:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Token_$14_storage_ptr",
                             "typeString": "struct Balance.Token"
@@ -288,7 +291,7 @@
                         },
                         "id": 29,
                         "nodeType": "ArrayTypeName",
-                        "src": "359:7:0",
+                        "src": "362:7:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_struct$_Token_$14_storage_$dyn_storage_ptr",
                           "typeString": "struct Balance.Token[]"
@@ -307,7 +310,7 @@
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
                           "referencedDeclaration": 19,
-                          "src": "395:14:0",
+                          "src": "398:14:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                             "typeString": "address[] memory"
@@ -318,9 +321,10 @@
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
+                        "memberLocation": "413:6:0",
                         "memberName": "length",
                         "nodeType": "MemberAccess",
-                        "src": "395:21:0",
+                        "src": "398:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -340,7 +344,7 @@
                       "isPure": true,
                       "lValueRequested": false,
                       "nodeType": "NewExpression",
-                      "src": "383:11:0",
+                      "src": "386:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_struct$_Token_$14_memory_ptr_$dyn_memory_ptr_$",
                         "typeString": "function (uint256) pure returns (struct Balance.Token memory[] memory)"
@@ -352,12 +356,15 @@
                           "pathNode": {
                             "id": 31,
                             "name": "Token",
+                            "nameLocations": [
+                              "390:5:0"
+                            ],
                             "nodeType": "IdentifierPath",
                             "referencedDeclaration": 14,
-                            "src": "387:5:0"
+                            "src": "390:5:0"
                           },
                           "referencedDeclaration": 14,
-                          "src": "387:5:0",
+                          "src": "390:5:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Token_$14_storage_ptr",
                             "typeString": "struct Balance.Token"
@@ -365,7 +372,7 @@
                         },
                         "id": 33,
                         "nodeType": "ArrayTypeName",
-                        "src": "387:7:0",
+                        "src": "390:7:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_struct$_Token_$14_storage_$dyn_storage_ptr",
                           "typeString": "struct Balance.Token[]"
@@ -378,9 +385,10 @@
                     "isPure": false,
                     "kind": "functionCall",
                     "lValueRequested": false,
+                    "nameLocations": [],
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "383:34:0",
+                    "src": "386:34:0",
                     "tryCall": false,
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_struct$_Token_$14_memory_ptr_$dyn_memory_ptr",
@@ -388,13 +396,13 @@
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "359:58:0"
+                  "src": "362:58:0"
                 },
                 {
                   "body": {
                     "id": 77,
                     "nodeType": "Block",
-                    "src": "476:182:0",
+                    "src": "479:182:0",
                     "statements": [
                       {
                         "assignments": [
@@ -406,10 +414,10 @@
                             "id": 52,
                             "mutability": "mutable",
                             "name": "ercToken",
-                            "nameLocation": "497:8:0",
+                            "nameLocation": "500:8:0",
                             "nodeType": "VariableDeclaration",
                             "scope": 77,
-                            "src": "490:15:0",
+                            "src": "493:15:0",
                             "stateVariable": false,
                             "storageLocation": "default",
                             "typeDescriptions": {
@@ -422,12 +430,15 @@
                               "pathNode": {
                                 "id": 50,
                                 "name": "IERC20",
+                                "nameLocations": [
+                                  "493:6:0"
+                                ],
                                 "nodeType": "IdentifierPath",
                                 "referencedDeclaration": 9,
-                                "src": "490:6:0"
+                                "src": "493:6:0"
                               },
                               "referencedDeclaration": 9,
-                              "src": "490:6:0",
+                              "src": "493:6:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_IERC20_$9",
                                 "typeString": "contract IERC20"
@@ -446,7 +457,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 19,
-                                "src": "515:14:0",
+                                "src": "518:14:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                                   "typeString": "address[] memory"
@@ -459,7 +470,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 40,
-                                "src": "530:1:0",
+                                "src": "533:1:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -470,7 +481,7 @@
                               "isPure": false,
                               "lValueRequested": false,
                               "nodeType": "IndexAccess",
-                              "src": "515:17:0",
+                              "src": "518:17:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -489,7 +500,7 @@
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
                             "referencedDeclaration": 9,
-                            "src": "508:6:0",
+                            "src": "511:6:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_contract$_IERC20_$9_$",
                               "typeString": "type(contract IERC20)"
@@ -501,9 +512,10 @@
                           "isPure": false,
                           "kind": "typeConversion",
                           "lValueRequested": false,
+                          "nameLocations": [],
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "508:25:0",
+                          "src": "511:25:0",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_contract$_IERC20_$9",
@@ -511,7 +523,7 @@
                           }
                         },
                         "nodeType": "VariableDeclarationStatement",
-                        "src": "490:43:0"
+                        "src": "493:43:0"
                       },
                       {
                         "assignments": [
@@ -523,10 +535,10 @@
                             "id": 60,
                             "mutability": "mutable",
                             "name": "balance",
-                            "nameLocation": "552:7:0",
+                            "nameLocation": "555:7:0",
                             "nodeType": "VariableDeclaration",
                             "scope": 77,
-                            "src": "547:12:0",
+                            "src": "550:12:0",
                             "stateVariable": false,
                             "storageLocation": "default",
                             "typeDescriptions": {
@@ -537,7 +549,7 @@
                               "id": 59,
                               "name": "uint",
                               "nodeType": "ElementaryTypeName",
-                              "src": "547:4:0",
+                              "src": "550:4:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -555,7 +567,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 16,
-                              "src": "581:6:0",
+                              "src": "584:6:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_address",
                                 "typeString": "address"
@@ -575,7 +587,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 52,
-                              "src": "562:8:0",
+                              "src": "565:8:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_contract$_IERC20_$9",
                                 "typeString": "contract IERC20"
@@ -586,10 +598,11 @@
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
+                            "memberLocation": "574:9:0",
                             "memberName": "balanceOf",
                             "nodeType": "MemberAccess",
                             "referencedDeclaration": 8,
-                            "src": "562:18:0",
+                            "src": "565:18:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
                               "typeString": "function (address) view external returns (uint256)"
@@ -601,9 +614,10 @@
                           "isPure": false,
                           "kind": "functionCall",
                           "lValueRequested": false,
+                          "nameLocations": [],
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "562:26:0",
+                          "src": "565:26:0",
                           "tryCall": false,
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -611,7 +625,7 @@
                           }
                         },
                         "nodeType": "VariableDeclarationStatement",
-                        "src": "547:41:0"
+                        "src": "550:41:0"
                       },
                       {
                         "expression": {
@@ -627,7 +641,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 30,
-                              "src": "602:6:0",
+                              "src": "605:6:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_array$_t_struct$_Token_$14_memory_ptr_$dyn_memory_ptr",
                                 "typeString": "struct Balance.Token memory[] memory"
@@ -640,7 +654,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 40,
-                              "src": "609:1:0",
+                              "src": "612:1:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -651,7 +665,7 @@
                             "isPure": false,
                             "lValueRequested": true,
                             "nodeType": "IndexAccess",
-                            "src": "602:9:0",
+                            "src": "605:9:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Token_$14_memory_ptr",
                               "typeString": "struct Balance.Token memory"
@@ -668,7 +682,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 19,
-                                  "src": "620:14:0",
+                                  "src": "623:14:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                                     "typeString": "address[] memory"
@@ -681,7 +695,7 @@
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
                                   "referencedDeclaration": 40,
-                                  "src": "635:1:0",
+                                  "src": "638:1:0",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
                                     "typeString": "uint256"
@@ -692,7 +706,7 @@
                                 "isPure": false,
                                 "lValueRequested": false,
                                 "nodeType": "IndexAccess",
-                                "src": "620:17:0",
+                                "src": "623:17:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_address",
                                   "typeString": "address"
@@ -704,7 +718,7 @@
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
                                 "referencedDeclaration": 60,
-                                "src": "639:7:0",
+                                "src": "642:7:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
                                   "typeString": "uint256"
@@ -727,7 +741,7 @@
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
                               "referencedDeclaration": 14,
-                              "src": "614:5:0",
+                              "src": "617:5:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_type$_t_struct$_Token_$14_storage_ptr_$",
                                 "typeString": "type(struct Balance.Token storage pointer)"
@@ -739,16 +753,17 @@
                             "isPure": false,
                             "kind": "structConstructorCall",
                             "lValueRequested": false,
+                            "nameLocations": [],
                             "names": [],
                             "nodeType": "FunctionCall",
-                            "src": "614:33:0",
+                            "src": "617:33:0",
                             "tryCall": false,
                             "typeDescriptions": {
                               "typeIdentifier": "t_struct$_Token_$14_memory_ptr",
                               "typeString": "struct Balance.Token memory"
                             }
                           },
-                          "src": "602:45:0",
+                          "src": "605:45:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_struct$_Token_$14_memory_ptr",
                             "typeString": "struct Balance.Token memory"
@@ -756,7 +771,7 @@
                         },
                         "id": 76,
                         "nodeType": "ExpressionStatement",
-                        "src": "602:45:0"
+                        "src": "605:45:0"
                       }
                     ]
                   },
@@ -776,7 +791,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 40,
-                      "src": "444:1:0",
+                      "src": "447:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -791,7 +806,7 @@
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 19,
-                        "src": "448:14:0",
+                        "src": "451:14:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                           "typeString": "address[] memory"
@@ -802,15 +817,16 @@
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
+                      "memberLocation": "466:6:0",
                       "memberName": "length",
                       "nodeType": "MemberAccess",
-                      "src": "448:21:0",
+                      "src": "451:21:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "444:25:0",
+                    "src": "447:25:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -827,10 +843,10 @@
                         "id": 40,
                         "mutability": "mutable",
                         "name": "i",
-                        "nameLocation": "437:1:0",
+                        "nameLocation": "440:1:0",
                         "nodeType": "VariableDeclaration",
                         "scope": 78,
-                        "src": "432:6:0",
+                        "src": "435:6:0",
                         "stateVariable": false,
                         "storageLocation": "default",
                         "typeDescriptions": {
@@ -841,7 +857,7 @@
                           "id": 39,
                           "name": "uint",
                           "nodeType": "ElementaryTypeName",
-                          "src": "432:4:0",
+                          "src": "435:4:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -860,7 +876,7 @@
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "441:1:0",
+                      "src": "444:1:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
                         "typeString": "int_const 0"
@@ -868,7 +884,7 @@
                       "value": "0"
                     },
                     "nodeType": "VariableDeclarationStatement",
-                    "src": "432:10:0"
+                    "src": "435:10:0"
                   },
                   "loopExpression": {
                     "expression": {
@@ -880,14 +896,14 @@
                       "nodeType": "UnaryOperation",
                       "operator": "++",
                       "prefix": false,
-                      "src": "471:3:0",
+                      "src": "474:3:0",
                       "subExpression": {
                         "id": 47,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
                         "referencedDeclaration": 40,
-                        "src": "471:1:0",
+                        "src": "474:1:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -900,10 +916,10 @@
                     },
                     "id": 49,
                     "nodeType": "ExpressionStatement",
-                    "src": "471:3:0"
+                    "src": "474:3:0"
                   },
                   "nodeType": "ForStatement",
-                  "src": "427:231:0"
+                  "src": "430:231:0"
                 },
                 {
                   "expression": {
@@ -912,7 +928,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 30,
-                    "src": "674:6:0",
+                    "src": "677:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_struct$_Token_$14_memory_ptr_$dyn_memory_ptr",
                       "typeString": "struct Balance.Token memory[] memory"
@@ -921,7 +937,7 @@
                   "functionReturnParameters": 25,
                   "id": 80,
                   "nodeType": "Return",
-                  "src": "667:13:0"
+                  "src": "670:13:0"
                 }
               ]
             },
@@ -931,7 +947,7 @@
             "kind": "function",
             "modifiers": [],
             "name": "getBalances",
-            "nameLocation": "252:11:0",
+            "nameLocation": "255:11:0",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 20,
@@ -942,10 +958,10 @@
                   "id": 16,
                   "mutability": "mutable",
                   "name": "wallet",
-                  "nameLocation": "272:6:0",
+                  "nameLocation": "275:6:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 82,
-                  "src": "264:14:0",
+                  "src": "267:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -956,7 +972,7 @@
                     "id": 15,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "264:7:0",
+                    "src": "267:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -970,10 +986,10 @@
                   "id": 19,
                   "mutability": "mutable",
                   "name": "tokenAddresses",
-                  "nameLocation": "297:14:0",
+                  "nameLocation": "300:14:0",
                   "nodeType": "VariableDeclaration",
                   "scope": 82,
-                  "src": "280:31:0",
+                  "src": "283:31:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -985,7 +1001,7 @@
                       "id": 17,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
-                      "src": "280:7:0",
+                      "src": "283:7:0",
                       "stateMutability": "nonpayable",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -994,7 +1010,7 @@
                     },
                     "id": 18,
                     "nodeType": "ArrayTypeName",
-                    "src": "280:9:0",
+                    "src": "283:9:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
                       "typeString": "address[]"
@@ -1003,7 +1019,7 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "263:49:0"
+              "src": "266:49:0"
             },
             "returnParameters": {
               "id": 25,
@@ -1017,7 +1033,7 @@
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
                   "scope": 82,
-                  "src": "333:14:0",
+                  "src": "336:14:0",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -1031,12 +1047,15 @@
                       "pathNode": {
                         "id": 21,
                         "name": "Token",
+                        "nameLocations": [
+                          "336:5:0"
+                        ],
                         "nodeType": "IdentifierPath",
                         "referencedDeclaration": 14,
-                        "src": "333:5:0"
+                        "src": "336:5:0"
                       },
                       "referencedDeclaration": 14,
-                      "src": "333:5:0",
+                      "src": "336:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_struct$_Token_$14_storage_ptr",
                         "typeString": "struct Balance.Token"
@@ -1044,7 +1063,7 @@
                     },
                     "id": 23,
                     "nodeType": "ArrayTypeName",
-                    "src": "333:7:0",
+                    "src": "336:7:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_array$_t_struct$_Token_$14_storage_$dyn_storage_ptr",
                       "typeString": "struct Balance.Token[]"
@@ -1053,29 +1072,29 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "332:16:0"
+              "src": "335:16:0"
             },
             "scope": 83,
-            "src": "243:444:0",
+            "src": "246:444:0",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 84,
-        "src": "150:539:0",
+        "src": "153:539:0",
         "usedErrors": []
       }
     ],
-    "src": "32:657:0"
+    "src": "32:660:0"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.13+commit.abaa5c0e.Emscripten.clang"
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.4.11",
-  "updatedAt": "2023-02-15T11:20:07.973Z",
+  "schemaVersion": "3.4.12",
+  "updatedAt": "2023-02-28T20:14:55.596Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

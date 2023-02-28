@@ -1,5 +1,6 @@
 import { ethers } from "ethers";
 
+//Define the appplication binary interface(JSON representation of the function)
 const abi = ["function balanceOf(address account) external view returns (uint256)"];
 
 const token_address = "0xc0ecb8499d8da2771abcbf4091db7f65158f1468";
